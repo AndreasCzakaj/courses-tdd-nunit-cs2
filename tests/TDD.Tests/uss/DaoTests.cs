@@ -5,63 +5,71 @@ using TDD.Uss;
 
 namespace TDD.Tests.Uss
 {
-    class Book
+    public class Book
     {
         public string Name { get; set; } = "";
     }
     
-    public class DaoDictionaryImplTests
+    public abstract class DaoTestsBase<T> where T : Dao<Book>
     {
-        private DaoDictionaryImpl<Book> _dao;
+        public T _dao;
 
-        [SetUp]
-        public void setUp()
+        public Book _ExistingBook = new Book()
         {
-            Dictionary<string, Book> repo = new Dictionary<string, Book>();
-            var book = new Book();
-            book.Name = "Necronomicon";
-            repo.Add("existingKey", book);
-            
-            _dao = new DaoDictionaryImpl<Book>(repo);
+            Name = "Necronomicon"
+        };
+
+        protected abstract T CreateAndInitDao();
+        
+        [SetUp]
+        public void SetUp()
+        {
+            _dao = CreateAndInitDao();
         }
         
         [Test]
-        public void itShouldYieldNullForUnknownIdentifier()
+        public void ItShouldYieldNullForUnknownIdentifier()
         {
             var actual = _dao.Get("i_do_not_exist");
             Assert.That(actual, Is.Null);
         }
         
         [Test]
-        public void itShouldYieldEntryForKnownIdentifier()
+        public void ItShouldYieldEntryForKnownIdentifier()
         {
             var actual = _dao.Get("existingKey");
             Assert.Multiple(() =>
             {
                 Assert.That(actual, Is.Not.Null);
-                Assert.That(actual!.Name, Is.EqualTo("Necronomicon"));
+                Assert.That(actual!.Name, Is.EqualTo(_ExistingBook.Name));
             });
             //Assert.That(actual, Is.Not.Null.And.Has.Property("Name").EqualTo("Necronomicon"));
         }
     }
     
-    public class DaoFileImplTests
+    public class DaoDictionaryImplTests : DaoTestsBase<DaoDictionaryImpl<Book>>
     {
-        private DaoFileImpl<Book> _dao;
+        protected override DaoDictionaryImpl<Book> CreateAndInitDao()
+        {
+           var repo = new Dictionary<string, Book> { { "existingKey", _ExistingBook } };
+           return new DaoDictionaryImpl<Book>(repo);
+        }
+    }
+    
+    public class DaoFileImplTests : DaoTestsBase<DaoFileImpl<Book>>
+    {
         private DirectoryInfo dirInfo;
         private string tmpFolder;
 
-        [SetUp]
-        public void setUp()
+        protected override DaoFileImpl<Book> CreateAndInitDao()
         {
             dirInfo = Directory.CreateTempSubdirectory("tdd-DaoFileImplTests");
             tmpFolder = dirInfo.FullName;
             
-            _dao = new DaoFileImpl<Book>(tmpFolder);
+            var dao = new DaoFileImpl<Book>(tmpFolder);
+            dao.Save(_ExistingBook, "existingKey");
             
-            var book = new Book();
-            book.Name = "Necronomicon";
-            _dao.Save(book, "existingKey");
+            return dao;
         }
 
         [TearDown]
@@ -71,25 +79,6 @@ namespace TDD.Tests.Uss
             {
                 Directory.Delete(tmpFolder, true);
             }
-        }
-        
-        [Test]
-        public void itShouldYieldNullForUnknownIdentifier()
-        {
-            var actual = _dao.Get("i_do_not_exist");
-            Assert.That(actual, Is.Null);
-        }
-        
-        [Test]
-        public void itShouldYieldEntryForKnownIdentifier()
-        {
-            var actual = _dao.Get("existingKey");
-            Assert.Multiple(() =>
-            {
-                Assert.That(actual, Is.Not.Null);
-                Assert.That(actual!.Name, Is.EqualTo("Necronomicon"));
-            });
-            //Assert.That(actual, Is.Not.Null.And.Has.Property("Name").EqualTo("Necronomicon"));
         }
         
         [Test]

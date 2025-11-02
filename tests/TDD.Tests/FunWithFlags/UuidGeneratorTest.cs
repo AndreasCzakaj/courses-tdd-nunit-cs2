@@ -54,12 +54,12 @@ namespace TDD.Tests.FunWithFlags
     [TestFixture]
     public class UuidGeneratorNaiveRandomImplTest
     {
-        List<String> capturedUuids;
+        List<string> capturedUuids;
 
         [OneTimeSetUp]
         public void Setup()
         {
-            capturedUuids = new List<String>();
+            capturedUuids = new List<string>();
         }
 
         [Test]

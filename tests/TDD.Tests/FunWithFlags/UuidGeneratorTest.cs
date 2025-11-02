@@ -60,7 +60,6 @@ namespace TDD.Tests.FunWithFlags
         public void Setup()
         {
             capturedUuids = new List<String>();
-            characterFrequency = new Dictionary<char, int>();
         }
 
         [Test]

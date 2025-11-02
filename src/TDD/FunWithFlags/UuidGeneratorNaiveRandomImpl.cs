@@ -19,7 +19,7 @@ namespace TDD.FunWithFlags
 
         string CreateOne()
         {
-            return RANDOM.Next(15).ToString("x");
+            return RANDOM.Next(16).ToString("x");
         }
     }
 }

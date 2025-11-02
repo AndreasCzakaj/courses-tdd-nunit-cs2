@@ -33,5 +33,49 @@ namespace TDD.Tests.FunWithFlags
                 //    .SetName("it should match pattern [A-F0-9]{8}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{4}-[A-F0-9]{12} for case: upper case, with dashes")
             };
         }
+
+
+        [Test]
+        [Repeat(5)]
+        public void ShouldCreateDifferentUuidsOnSubsequentCalls()
+        {
+            // given
+            var uuidGenerator = new UuidGeneratorNaiveRandomImpl();
+
+            // when
+            var uuid1 = uuidGenerator.Create();
+            var uuid2 = uuidGenerator.Create();
+
+            // then
+            Assert.That(uuid1, Is.Not.EqualTo(uuid2), "Subsequent calls to Create() should return different UUIDs");
+        }
+    }
+
+    [TestFixture]
+    public class UuidGeneratorNaiveRandomImplTest
+    {
+        List<String> capturedUuids;
+
+        [OneTimeSetUp]
+        public void Setup()
+        {
+            capturedUuids = new List<String>();
+            characterFrequency = new Dictionary<char, int>();
+        }
+
+        [Test]
+        [Repeat(500)]
+        public void ShouldCreateDifferentUuidsOnSubsequentCalls()
+        {
+            // given
+            var uuidGenerator = new UuidGeneratorNaiveRandomImpl();
+
+            // when
+            var uuid = uuidGenerator.Create();
+
+            // then
+            Assert.That(capturedUuids, Does.Not.Contain(uuid));
+            capturedUuids.Add(uuid);
+        }
     }
 }

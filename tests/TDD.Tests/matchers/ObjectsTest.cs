@@ -24,19 +24,19 @@ namespace TDD.Tests.Matchers
 
         [Test]
         [Ignore("TODO: Should verify that person has FirstName 'Kim'")]
-        public void VerifyPersonAtIndex23HasFirstNameKim()
+        public void VerifyPersonHasFirstNameKim()
         {
         }
 
         [Test]
         [Ignore("TODO: Should verify that person has fields 'Id' and 'IpAddress'")]
-        public void VerifyPersonAtIndex23ContainsFields()
+        public void VerifyPersonContainsFields()
         {
         }
 
         [Test]
-        [Ignore("TODO: Should verify that person contains specific values")]
-        public void VerifyPersonAtIndex23ContainsValues()
+        [Ignore("TODO: Should verify that person contains values FirstName: 'Kim' and Email: 'krawcliffen@seesaa.net'")]
+        public void VerifyPersonContainsValues()
         {
         }
     }

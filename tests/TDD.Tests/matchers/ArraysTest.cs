@@ -11,6 +11,7 @@ namespace TDD.Tests.Matchers
         [Ignore("TODO: List should have size 3")]
         public void ListShouldHaveSize3()
         {
+            AssertThat(Arrays.GetList(), Has.Count.EqualTo(3), "List should have size 3");
         }
 
         [Test]

@@ -23,19 +23,25 @@ namespace TDD.Tests.Matchers
         }
 
         [Test]
+        [Ignore("TODO: Should verify that person is equal to another (not same) person with the same values")]
+        public void VerifyPersonEqualsPerson()
+        {
+        }
+
+        [Test]
         [Ignore("TODO: Should verify that person has FirstName 'Kim'")]
         public void VerifyPersonHasFirstNameKim()
         {
         }
 
         [Test]
-        [Ignore("TODO: Should verify that person has fields 'Id' and 'IpAddress'")]
+        [Ignore("TODO: Should verify that person has fields 'FirstName' and 'Email'")]
         public void VerifyPersonContainsFields()
         {
         }
 
         [Test]
-        [Ignore("TODO: Should verify that person contains values FirstName: 'Kim' and Email: 'krawcliffen@seesaa.net'")]
+        [Ignore("TODO: Should verify that person contains values LastName: 'Rawcliffe' and Email: 'krawcliffen@seesaa.net'")]
         public void VerifyPersonContainsValues()
         {
         }

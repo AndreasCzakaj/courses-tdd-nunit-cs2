@@ -37,7 +37,7 @@ namespace TDD.Tests.Matchers
         }
 
         [Test]
-        [Ignore("ToDo: expect folder at _nonExistingPath to exists and not to be empty")]
+        [Ignore("ToDo: expect folder at _parentFolder to exists and not to be empty")]
         public void TestFolder()
         {
         }
@@ -49,7 +49,7 @@ namespace TDD.Tests.Matchers
         }
 
         [Test]
-        [Ignore("ToDd: expect file at _existingPath2 to have identical content as file at _existingPath but different from file at _existingPath3")]
+        [Ignore("ToDo: expect file at _existingPath2 to have identical content as file at _existingPath but different from file at _existingPath3")]
         public void TestFileContent()
         {
         }

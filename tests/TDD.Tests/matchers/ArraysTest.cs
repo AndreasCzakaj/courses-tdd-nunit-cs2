@@ -8,8 +8,32 @@ namespace TDD.Tests.Matchers
     {
 
         [Test]
-        [Ignore("TODO: Array should have size 3")]
-        public void Init_ShouldHaveSize3()
+        [Ignore("TODO: List should have size 3")]
+        public void ListShouldHaveSize3()
+        {
+        }
+
+        [Test]
+        [Ignore("TODO")]
+        public void ListShouldContain_a()
+        {
+        }
+
+        [Test]
+        [Ignore("TODO")]
+        public void ListShouldNotContain_d()
+        {
+        }
+
+        [Test]
+        [Ignore("TODO")]
+        public void ListShouldContain_c_and_a()
+        {
+        }
+
+        [Test]
+        [Ignore("TODO")]
+        public void ListShouldHaveNoDuplicates()
         {
         }
     }

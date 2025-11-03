@@ -58,8 +58,8 @@ namespace TDD.Tests.Uss
     
     public class DaoFileImplTests : DaoTestsBase<DaoFileImpl<Book>>
     {
-        private DirectoryInfo dirInfo;
-        private string tmpFolder;
+        private DirectoryInfo? dirInfo;
+        private string? tmpFolder;
 
         protected override DaoFileImpl<Book> CreateAndInitDao()
         {
@@ -84,7 +84,7 @@ namespace TDD.Tests.Uss
         [Test]
         public void itShouldFailForGetIfIOError()
         {
-            var filePath = Path.Combine(tmpFolder, "existingKey.json");
+            var filePath = Path.Combine(tmpFolder!, "existingKey.json");
             File.WriteAllText(filePath, "this_is_broken_json");
             DaoException error = Assert.Throws<DaoException>(() => _dao.Get("existingKey"));
             Assert.That(error.Message, Is.EqualTo("DaoFileImpl.get failed"));
@@ -96,7 +96,7 @@ namespace TDD.Tests.Uss
             var book = new Book();
             book.Name = "Hitchhiker's Guide to the Galaxy";
             
-            Directory.Delete(tmpFolder, true);
+            Directory.Delete(tmpFolder!, true);
             
             DaoException error = Assert.Throws<DaoException>(() => _dao.Save(book, "someKey"));
             Assert.That(error.Message, Is.EqualTo("DaoFileImpl.Save failed"));

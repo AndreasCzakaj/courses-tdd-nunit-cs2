@@ -6,11 +6,6 @@ namespace TDD.Tests.Fibonacci
     public class FibonacciTest
     {
 
-        [SetUp]
-        public void beforeEach()
-        {
-        }
-
         [Test]
         public void ShouldYield0For0()
         {
@@ -22,8 +17,38 @@ namespace TDD.Tests.Fibonacci
             int actual = fibonacci.Calc(index);
 
             // Assert   ("then")
-            Assert.That(actual, Is.EqualTo(0));
+            int expected = 0;
+            Assert.That(actual, Is.EqualTo(expected));
         }
+
+        [Test]
+        [Ignore("ToDo")]
+        public void ShouldYield1For1() {}
+
+        [Test]
+        [Ignore("ToDo")]
+        public void ShouldYield1For2() {}
+
+        [Test]
+        [Ignore("ToDo")]
+        public void ShouldYield2For3() {}
+
+        [Test]
+        [Ignore("ToDo")]
+        public void ShouldYield3For4() {}
+
+        [Test]
+        [Ignore("ToDo")]
+        public void ShouldYield5For5() {}
+
+        [Test]
+        [Ignore("ToDo")]
+        public void ShouldYield8For6() {}
+
+
+        [Test]
+        [Ignore("ToDo")]
+        public void ShouldYield4_181For19() {}
 
 
         [Test]
@@ -32,40 +57,11 @@ namespace TDD.Tests.Fibonacci
         {
         }
 
-
         [Test]
         [Ignore("ToDo")]
         public void ShouldFailFor47()
         {
         }
 
-    /*[TestCase(0, 0)]
-    [TestCase(1, 1)]
-    [TestCase(2, 1)]
-    [TestCase(3, 2)]
-    [TestCase(5, 5)]
-    [TestCase(6, 8)]
-    [TestCase(7, 13)]
-    [TestCase(19, 4_181)]
-    [TestCase(30, 832_040)]
-    public void shouldYieldFibonacci(int index, int expected)
-    {
-      // Act (when)
-      int actual = fibonacci.Calculate(index);
-
-      // Assert (then)
-      Assert.That(actual, Is.EqualTo(expected));
-    }*/
-
-    /*[TestCase(-1, "Index must not be negative")]
-    [TestCase(47, "Indext must not be greater than 46")]
-    public void shouldThrowError(int index, string expected)
-    {
-      // Act (when)
-      ArgumentException e = Assert.Throws<ArgumentException>(() => fibonacci.Calculate(index));
-
-      // Assert (then)
-      Assert.That(e.Message, Is.EqualTo(expected));
-    }*/
   }
 }

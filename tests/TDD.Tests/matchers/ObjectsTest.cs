@@ -17,33 +17,59 @@ namespace TDD.Tests.Matchers
         }
 
         [Test]
-        [Ignore("TODO: Should verify that the people list is initialized and has 1000 entries")]
-        public void Init_ShouldHaveCorrectSize()
-        {
-        }
-
-        [Test]
-        [Ignore("TODO: Should verify that person is equal to another (not same) person with the same values")]
-        public void VerifyPersonEqualsPerson()
-        {
-        }
-
-        [Test]
-        [Ignore("TODO: Should verify that person has FirstName 'Kim'")]
+        [Description("Should verify that person has FirstName 'Kim'")]
+        [Ignore("TODO")]
         public void VerifyPersonHasFirstNameKim()
         {
         }
 
         [Test]
-        [Ignore("TODO: Should verify that person has fields 'FirstName' and 'Email'")]
+        [Description("Should verify that person has fields FirstName and Email")]
+        [Ignore("TODO")]
         public void VerifyPersonContainsFields()
         {
         }
 
         [Test]
-        [Ignore("TODO: Should verify that person contains values LastName: 'Rawcliffe' and Email: 'krawcliffen@seesaa.net'")]
+        [Description("Should verify that person is equal to expected person but not same")]
+        [Ignore("TODO")]
+        public void VerifyPersonEqualsPerson()
+        {
+            var expectedPerson = new Person
+            {
+                Id = 24,
+                FirstName = "Kim",
+                LastName = "Rawcliffe",
+                Email = "krawcliffen@seesaa.net",
+                IpAddress = "55.247.214.105",
+            };
+        }
+
+        [Test]
+        [Description("Should verify that person is almost equal to expected person exept for Id")]
+        [Ignore("TODO")]
+        public void VerifyPersonEqualsPersonExceptId()
+        {
+            var expectedPerson = new Person
+            {
+                Id = 340643069,
+                FirstName = "Kim",
+                LastName = "Rawcliffe",
+                Email = "krawcliffen@seesaa.net",
+                IpAddress = "55.247.214.105",
+            };
+        }
+
+        [Test]
+        [Description("Should verify that person contains values LastName: 'Rawcliffe' and Email: 'krawcliffen@seesaa.net'")]
+        [Ignore("TODO")]
         public void VerifyPersonContainsValues()
         {
+            var expectedPerson = new Person
+            {
+                LastName = "Rawcliffe",
+                Email = "krawcliffen@seesaa.net",
+            };
         }
     }
 }

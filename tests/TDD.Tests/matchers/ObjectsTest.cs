@@ -17,15 +17,32 @@ namespace TDD.Tests.Matchers
         }
 
         [Test]
-        [Ignore("TODO: Should verify that the people list is initialized and has 1000 entries")]
+        [Description("Should verify that the people list is initialized and has 1000 entries")]
         public void Init_ShouldHaveCorrectSize()
         {
+            Assert.That(people, Has.Count.EqualTo(1000), "People list should have 1000 entries");
         }
 
         [Test]
-        [Ignore("TODO: Should verify that person is equal to another (not same) person with the same values")]
         public void VerifyPersonEqualsPerson()
         {
+            var expectedPerson = new Person
+            {
+                Id = 24,
+                FirstName = "Kim",
+                LastName = "Rawcliffe",
+                Email = "krawcliffen@seesaa.net",
+                IpAddress = "55.247.214.105",
+            };
+
+            // Compare objects by properties (NUnit 4.4+)
+            Assert.That(person, Is.EqualTo(expectedPerson).UsingPropertiesComparer());
+
+            // Compare objects by properties (NUnit 4.4+)
+            Assert.That(person, Is.EqualTo(expectedPerson).UsingPropertiesComparer());
+
+            // Verify they are not the same object reference
+            Assert.That(person, Is.Not.SameAs(expectedPerson));
         }
 
         [Test]

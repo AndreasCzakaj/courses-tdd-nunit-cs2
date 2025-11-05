@@ -56,6 +56,7 @@ namespace TDD.Tests.Uss
         }
     }
     
+    [Category("Integration")]
     public class DaoFileImplTests : DaoTestsBase<DaoFileImpl<Book>>
     {
         private DirectoryInfo? dirInfo;

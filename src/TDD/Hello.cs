@@ -4,7 +4,7 @@ namespace TDD
     {
         public static int Answer(string question)
         {
-            return 43;
+            return 42;
         }
     }
 }

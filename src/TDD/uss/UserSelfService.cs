@@ -19,14 +19,23 @@ namespace TDD.Uss
 
     public class UserSelfServiceException : Exception
     {
+        public UserSelfServiceException(string message) : base(message)
+        {
+        }
     }
 
     public class UserException : UserSelfServiceException
     {
+        public UserException(string message) : base(message)
+        {
+        }
     }
 
     public class ServerException : UserSelfServiceException
     {
+        public ServerException(string message) : base(message)
+        {
+        }
     }
 
     public class SignUpData
